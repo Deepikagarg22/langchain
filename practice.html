@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="mybar">
+        
+    </div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+     google.charts.load('current', {'packages': ['bar']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+  var data = new google.visualization.arrayToDataTable([
+    ['Monthly-Year', 'two_year_before', 'one_year_before', 'MODEL', 'AFTER_one_year'],
+    ['Jan', {v: 100, f: '(2020)'}, {v: 120, f: '(2021)'}, {v: 150, f: '(2022)'}, {v: 180, f: '(2023)'}],
+    ['Feb', {v: 110, f: '(2020)'}, {v: 130, f: '(2021)'}, {v: 160, f: '(2022)'}, {v: 190, f: '(2023)'}],
+    ['Mar', {v: 120, f: '(2020)'}, {v: 140, f: '(2021)'}, {v: 170, f: '(2022)'}, {v: 200, f: '(2023)'}],
+    ['Apr', {v: 130, f: '(2020)'}, {v: 150, f: '(2021)'}, {v: 180, f: '(2022)'}, {v: 210, f: '(2023)'}],
+    ['May', {v: 140, f: '(2020)'}, {v: 160, f: '(2021)'}, {v: 190, f: '(2022)'}, {v: 220, f: '(2023)'}],
+    ['Jun', {v: 150, f: '(2020)'}, {v: 170, f: '(2021)'}, {v: 200, f: '(2022)'}, {v: 230, f: '(2023)'}],
+    ['Jul', {v: 160, f: '(2020)'}, {v: 180, f: '(2021)'}, {v: 210, f: '(2022)'}, {v: 240, f: '(2023)'}],
+    ['Aug', {v: 170, f: '(2020)'}, {v: 190, f: '(2021)'}, {v: 220, f: '(2022)'}, {v: 250, f: '(2023)'}],
+    ['Sep', {v: 180, f: '(2020)'}, {v: 200, f: '(2021)'}, {v: 230, f: '(2022)'}, {v: 260, f: '(2023)'}],
+    ['Oct', {v: 190, f: '(2020)'}, {v: 210, f: '(2021)'}, {v: 240, f: '(2022)'}, {v: 270, f: '(2023)'}],
+    ['Nov', {v: 200, f: '(2020)'}, {v: 220, f: '(2021)'}, {v: 250, f: '(2022)'}, {v: 280, f: '(2023)'}],
+    ['Dec', {v: 210, f: '(2020)'}, {v: 230, f: '(2021)'}, {v: 260, f: '(2022)'}, {v: 290, f: '(2023)'}]
+  ]);
+
+  var options = {
+    bars: 'vertical', // Required for Material Bar Charts.
+    vAxes: {
+      0: { format: 'decimal' }, // Left axis with decimal format
+      1: { format: 'decimal' }  // Right axis with decimal format
+    },
+    series: {
+      0: { targetAxisIndex: 0 }, // Bind series 0 to the left axis (index 0).
+      1: { targetAxisIndex: 1 }  // Bind series 1 to the right axis (index 1).
+    },
+    tooltip: {
+      isHtml: true, // Enable HTML in tooltip
+      trigger: 'selection', // Display tooltip when a bar is selected
+      showColorCode: true, // Show color code of the bar in tooltip
+      text: 'Value: {v}<br>Year: {row}', // Customize tooltip content
+    },
+    colors: ['#4682B4', '#4682B4', '#A52A2A', '#4682B4', '#4682B4']
+  };
+
+  var chart = new google.charts.Bar(document.getElementById('mybar'));
+  chart.draw(data, options);
+};
+
+  </script>
+</body>
+</html>
